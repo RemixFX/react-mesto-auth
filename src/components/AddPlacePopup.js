@@ -28,11 +28,11 @@ function AddPlacePopup(props) {
       onClose={props.onClose} onPopupClick={props.onPopupClick}>
       <fieldset className="form__field">
         <input type="text" autoComplete="off" name="name" id="title" placeholder="Название"
-          required minLength="2" maxLength="30" className="form__input form__input_type_name-card"
+          required minLength="2" maxLength="30" className="form__input popup-form__input"
           value={name} onChange={handleChangeName} />
         <span id="title-error" className="form__error"></span>
         <input type="url" autoComplete="off" name="link" id="link" placeholder="Ссылка на картинку"
-          required className="form__input form__input_type_link"
+          required className="form__input popup-form__input"
           value={link} onChange={handleChangeLink} />
         <span id="link-error" className="form__error"></span>
       </fieldset>

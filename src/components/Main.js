@@ -1,5 +1,6 @@
 import React from 'react';
-import Card from './Card.js'
+import Card from './Card.js';
+import Footer from './Footer';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -32,6 +33,7 @@ function Main(props) {
           )}
         </TransitionGroup>
       </section>
+      <Footer />
     </main>
   )
 }

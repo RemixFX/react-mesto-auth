@@ -21,7 +21,7 @@ function EditAvatarPopups(props) {
       onClose={props.onClose} onPopupClick={props.onPopupClick}>
       <fieldset className="form__field">
         <input type="url" autoComplete="off" name="avatar" id="avatar" placeholder="Ссылка на картинку"
-          required className="form__input form__input_type_link"
+          required className="form__input popup-form__input"
           ref={avatarRef} />
         <span id="avatar-error" className="form__error"></span>
       </fieldset>
