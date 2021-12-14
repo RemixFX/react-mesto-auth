@@ -19,4 +19,4 @@ SPA написанный на React с использованием функци
 * Использование transition
 * Верстка Flex и Grid сетками
 
-## [Ссылка на работу в GitHub-Pages](https://remixfx.github.io/mesto-react/)
+## [Ссылка на работу в GitHub-Pages](https://remixfx.github.io/react-mesto-auth/)
