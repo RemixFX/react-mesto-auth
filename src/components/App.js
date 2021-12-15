@@ -13,8 +13,6 @@ import EditProfilePopup from './EditProfilePopup';
 import ImagePopup from './ImagePopup';
 import EditAvatarPopups from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
-import FormValidator from './FormValidator';
-import { settings } from '../utils/utils';
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import ProtectedRoute from './ProtectedRoute';
 import auth from '../utils/auth';
@@ -56,48 +54,6 @@ function App() {
     })
       .catch(err => console.log(err))
   }, []);
-
-  // Включение валидации для формы регистрации
-  //React.useEffect(() => {
-  //  const registrationValidator = new FormValidator(settings, document.forms.registration);
-  //  registrationValidator.enableValidation()
-  //}, []);
-
-  // Включение валидации для формы редактирования текстовых полей профиля
-  React.useEffect(() => {
-    const profileEditValidator = new FormValidator(settings, document.forms.profileEdit);
-    profileEditValidator.enableValidation()
-  }, []);
-
-  // Включение валидации для формы добавления карточки
-  React.useEffect(() => {
-    const cardAddValidator = new FormValidator(settings, document.forms.cardAdd);
-    cardAddValidator.enableValidation()
-  }, []);
-
-  // Включение валидации для формы редактирования аватара профиля
-  React.useEffect(() => {
-    const avatarEditValidator = new FormValidator(settings, document.forms.avatarEdit);
-    avatarEditValidator.enableValidation()
-  }, []);
-
-  // Очистка ошибок валидации для формы редактирования текстовых полей профиля
-  React.useEffect(() => {
-    const profileEditValidator = new FormValidator(settings, document.forms.profileEdit);
-    profileEditValidator.resetValidation()
-  }, [isEditProfilePopupOpen]);
-
-  // Очистка ошибок валидации для формы добавления карточки
-  React.useEffect(() => {
-    const cardAddValidator = new FormValidator(settings, document.forms.cardAdd);
-    cardAddValidator.resetValidation()
-  }, [isAddPlacePopupOpen]);
-
-  // Очистка ошибок валидации для формы редактирования аватара профиля
-  React.useEffect(() => {
-    const avatarEditValidator = new FormValidator(settings, document.forms.avatarEdit);
-    avatarEditValidator.resetValidation()
-  }, [isEditAvatarPopupOpen]);
 
   // Сохранение токена при авторизации
 
