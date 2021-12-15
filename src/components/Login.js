@@ -1,5 +1,5 @@
 import React from "react";
-import * as auth from '../utils/auth';
+import auth from '../utils/auth';
 
 function Login(props) {
 

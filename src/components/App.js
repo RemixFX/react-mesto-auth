@@ -17,7 +17,7 @@ import FormValidator from './FormValidator';
 import { settings } from '../utils/utils';
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import ProtectedRoute from './ProtectedRoute';
-import * as auth from '../utils/auth';
+import auth from '../utils/auth';
 
 
 
