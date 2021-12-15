@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 function Header(props) {
 
-  let location = useLocation();
+  const location = useLocation();
 
   return (
     <header className="header">

@@ -1,5 +1,4 @@
 import React from "react";
-import auth from '../utils/auth';
 
 function Login(props) {
 
@@ -15,23 +14,13 @@ function Login(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    auth.authorize(password, email)
-      .then(data => {
-        setPassword('')
-        setEmail('')
-        props.onLogin(data)
-      })
-      .catch((err) => {
-        props.onError()
-        console.log(err)
-      })
+    props.onLogin(password, email)
   }
 
   return (
     <section className="registration">
       <h2 className="registration__heading">Вход</h2>
-      <form className="form registration-form" name="login"
-        onSubmit={handleSubmit}>
+      <form className="form registration-form" name="login" onSubmit={handleSubmit}>
         <input type="email" autoComplete="off" name="email" id="email"
           placeholder="Email" required className="form__input registration-form__input"
           value={email} onChange={handleChangeEmail} />
@@ -41,9 +30,8 @@ function Login(props) {
           className="form__input registration-form__input" placeholder="Пароль"
           value={password} onChange={handleChangePassword} />
         <span id="password-error" className="form__error"></span>
-        <button className="form__submit-button registration-form__submit-button registration-form__submit-button_disabled">
-          Войти
-        </button>
+        <button className="form__submit-button registration-form__submit-button
+        registration-form__submit-button_disabled">Войти</button>
       </form>
     </section>
   )

@@ -55,14 +55,36 @@ function App() {
       .catch(err => console.log(err))
   }, []);
 
-  // Сохранение токена при авторизации
+  // Регистрация
 
-  function handleLogin(data) {
-    if (data.token) {
-      localStorage.setItem('jwt', data.token)
-    }
-    setLoggedIn(true)
-    navigate('main')
+  function handleRegister(password, email) {
+    auth.register(password, email)
+      .then(res => {
+        console.log(res)
+        setIsOpenInfoTooltipSuccess(true)
+        navigate('/signin')
+      })
+      .catch((err) => {
+        setIsOpenInfoTooltipError(true)
+        console.log(err)
+      })
+  }
+
+  // Сохранение токена и авторизация
+
+  function handleLogin(password, email) {
+    auth.authorize(password, email)
+      .then(data => {
+        if (data.token) {
+          localStorage.setItem('jwt', data.token)
+        }
+        setLoggedIn(true)
+        navigate('main')
+      })
+      .catch((err) => {
+        setIsOpenInfoTooltipError(true)
+        console.log(err)
+      })
   }
 
   // Проверка токена
@@ -75,7 +97,7 @@ function App() {
         setEmail(res.data.email)
         navigate('main')
       })
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
     }
   }, [navigate])
 
@@ -203,13 +225,9 @@ function App() {
             onCardDelete={handleConfirmDeleteCardPopupOpen} />
           } />
 
-          <Route path="/signup" element={<Register
-            onRegister={() => setIsOpenInfoTooltipSuccess(true)}
-            onError={() => setIsOpenInfoTooltipError(true)} />} />
+          <Route path="/signup" element={<Register onRegister={handleRegister} />} />
 
-          <Route path="/signin" element={<Login
-          onLogin={handleLogin}
-          onError={() => setIsOpenInfoTooltipError(true)} />} />
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
 
           <Route path="*" element={loggedIn ? <Navigate replace to="/main" /> : <Navigate replace to="/signin" />} />
         </Routes>

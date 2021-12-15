@@ -25,11 +25,12 @@ function Main(props) {
       </section>
       <section className="elements">
         <TransitionGroup component={null}>
-          {props.cards.map((card) =>
-            <CSSTransition  classNames="element-animated" timeout={700} key={card._id} >
+          {props.cards.map((card) => (
+            <CSSTransition classNames="element-animated" timeout={700} key={card._id} >
               <Card card={card} onCardClick={props.onCardClick}
                 onCardLike={props.onCardLike} onCardDelete={props.onCardDelete} />
             </CSSTransition >
+          )
           )}
         </TransitionGroup>
       </section>

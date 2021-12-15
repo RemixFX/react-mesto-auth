@@ -1,12 +1,10 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom';
-import auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 function Register(props) {
 
   const [password, setPassword] = React.useState('');
   const [email, setEmail] = React.useState('');
-  const navigate = useNavigate()
 
   function handleChangePassword(evt) {
     setPassword(evt.target.value)
@@ -17,16 +15,7 @@ function Register(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    auth.register(password, email)
-      .then(res => {
-        console.log(res)
-        props.onRegister()
-        navigate('/signin')
-      })
-      .catch((err) => {
-        props.onError()
-        console.log(err)
-      })
+    props.onRegister(password, email)
   }
 
   return (
@@ -43,9 +32,8 @@ function Register(props) {
           className="form__input registration-form__input" placeholder="Пароль"
           value={password} onChange={handleChangePassword} />
         <span id="password-error" className="form__error"></span>
-        <button className="form__submit-button registration-form__submit-button registration-form__submit-button_disabled">
-          Зарегистрироваться
-        </button>
+        <button className="form__submit-button registration-form__submit-button
+         registration-form__submit-button_disabled">Зарегистрироваться</button>
         <div className="registration-form__signin">
           <p className="registration-form__signin-heading" >Уже зарегистрированы?</p>
           <Link to="/sign-in" className="registration-form__login-link">Войти</Link>
