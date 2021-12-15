@@ -7,7 +7,7 @@ import Register from './Register';
 import Login from './Login';
 import InfoTooltip from './InfoTooltip';
 import applied from '../images/applied.svg';
-import badrequest from '../images/badrequest.svg';
+import badRequest from '../images/badrequest.svg';
 import PopupWithForm from './PopupWithForm';
 import EditProfilePopup from './EditProfilePopup';
 import ImagePopup from './ImagePopup';
@@ -30,7 +30,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({ name: '', link: '' });
-  const [forDeleteCard, setForDeleteCard] = React.useState([])
+  const [forDeleteCard, setForDeleteCard] = React.useState(null)
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState('')
   const navigate = useNavigate()
@@ -260,7 +260,7 @@ function App() {
         <InfoTooltip title="Вы успешно зарегистрировались!" image={applied}
           isOpen={isOpenInfoTooltipSuccess} onClose={closeAllPopups} onPopupClick={handlePopupClick} />
 
-        <InfoTooltip title="Что-то пошло не так! Попробуйте ещё раз." image={badrequest}
+        <InfoTooltip title="Что-то пошло не так! Попробуйте ещё раз." image={badRequest}
           isOpen={isOpenInfoTooltipError} onClose={closeAllPopups} onPopupClick={handlePopupClick} />
 
         <EditProfilePopup name="profileEdit" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}
